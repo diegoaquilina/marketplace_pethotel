@@ -1,7 +1,7 @@
 class CreateLocations < ActiveRecord::Migration[7.0]
   def change
     create_table :locations do |t|
-      t.boolean :avaliable
+      t.boolean :available
       t.string :address
       t.string :home_type
       t.integer :total_occupancy

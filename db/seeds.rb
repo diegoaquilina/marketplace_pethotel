@@ -1,7 +1,41 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+puts "limpando banco de dados"
+Pet.destroy_all
+User.destroy_all
+Location.destroy_all
+
+puts "Criando banco de dados"
+5.times do
+  user = User.new(
+    name: Faker::TvShows::GameOfThrones.character,
+    email: Faker::Internet.email,
+    password: "123123"
+  )
+  user.save!
+  2.times do
+    pet = Pet.new(
+      name: Faker::TvShows::GameOfThrones.dragon,
+      size_kg: rand(1..30),
+      breed: Faker::TvShows::GameOfThrones.house
+    )
+    pet.user = user
+    pet.save!
+  end
+  location = Location.new(
+    address: Faker::TvShows::GameOfThrones.city,
+    available: [false, true].sample,
+    summary: Faker::TvShows::GameOfThrones.quote,
+    home_type: rand(0..3),
+    total_occupancy: rand(0..5)
+  )
+  location.user = user
+  location.save!
+end
+
+
+puts "usuários criados"
+
+puts "pets criados"
+
+puts "locations criadas"
