@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  devise_for :users
+  # root to: "pages#home"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/market', to: 'pages#market', as: 'market'
+
+  # get '/market', to: 'pages#market', as: 'market'
+
   # get '/hotel/busca', to 'locations#index'
   # get '/user/sign_up', to 'devices#registration'
   # get '/user/sign_in', to 'devices#registration'
