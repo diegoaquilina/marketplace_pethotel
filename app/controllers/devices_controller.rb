@@ -13,10 +13,11 @@ class DevicesController < ApplicationController
     end
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end
 
-private
 
-def user_params
-  params.require(:user).permit(:name, :email, :password)
-end

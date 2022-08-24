@@ -32,10 +32,11 @@ class ReservationsController < ApplicationController
     redirect_to reservation_path(@reservation)
   end
 
-end
+  private
 
-private
+  def reservation_params
+    params.require(:reservation).permit(:start_date, :end_date, :price, :total, :status)
+  end
 
-def reservation_params
-  params.require(:reservation).permit(:start date, :end_date, :price, :total, :status)
+
 end
