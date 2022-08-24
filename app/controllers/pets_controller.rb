@@ -6,8 +6,9 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
+    @pet.user = current_user
     if @pet.save
-      redirect_to location_path(@pet)
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
