@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :locations, only: [:index, :show]
-
+  resources :locations, only: [:index, :show, :edit, :update]
+  resources :reservation, only: [:new, :create, :show, :destroy, :edit, :update]
+  resources :devices, only: [:new, :create]
+  resources :pets, only: [:new, :create]
 
   #get '/market', to: 'pages#market', as: 'market'
-  #get '/hotel/busca', to 'locations#index'
-  #get '/user/sign_up', to 'devices#registration'
+  #get '/hotel/busca', to: 'locations#index'
+  #get '/user/sign_up', to: 'devices#registration'
   #get '/user/sign_in', to 'devices#registration'
   #get '/pets/new', to 'pets#new'
   #post '/pets', to 'pets#create'
