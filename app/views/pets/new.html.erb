@@ -1,1 +1,10 @@
-<h1>New</h1>
+<div class= "container">
+<h1>Adcione seu pet</h1>
+
+<%= simple_form_for @pet, as: :pet, url: pets_path(@pet), method: :post do |f| %>
+<%= f.input :name %>
+<%= f.input  :size_kg %>
+<%= f.input  :breed %>
+<%= f.submit "cadastrar pet", class:"btn btn-primary" %>
+<% end %>
+</div>
