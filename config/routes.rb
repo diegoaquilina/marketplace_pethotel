@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :create, :show, :edit, :update]
   end
   resources :reservations, only: [:destroy]
+
   resources :devices, only: [:new, :create]
   resources :pets, only: [:new, :create]
 
