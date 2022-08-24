@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :locations, only: [:index, :show, :edit, :update] do
+  resources :locations, only: [:index, :show, :edit, :update, :new] do
     resources :reservations, only: [:new, :create, :show, :edit, :update]
   end
   resources :reservations, only: [:destroy]
