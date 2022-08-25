@@ -27,7 +27,8 @@ puts "Criando banco de dados"
     available: [false, true].sample,
     summary: Faker::TvShows::GameOfThrones.quote,
     home_type: rand(0..3),
-    total_occupancy: rand(0..5)
+    total_occupancy: rand(0..5),
+    price: rand(50..200)
   )
   location.user = user
   location.save!
