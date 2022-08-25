@@ -5,9 +5,18 @@
 <%= f.input :address %>
 <%= f.input  :home_type, collection: Location::HOME_TYPE.map { |e| e.capitalize}, include_blank: false %>
 <%= f.input  :total_occupancy %>
+<%= f.label "Preço por Dia"%>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">R$</span>
+  </div>
+  <%= f.input :price,class:"form-control", label:false, input_html:{type:"number",min:0} %>
+  <div class="input-group-append">
+    <span class="input-group-text">.00</span>
+  </div>
+</div>
 <%= f.label :summary %>
 <%= f.text_area  :summary, class: "mx-auto w-100" %>
 <%= f.submit "cadastrar hospedagem", class:"btn btn-primary" %>
 <% end %>
 </div>
-
