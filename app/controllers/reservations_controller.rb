@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @reservations = Reservation.all
+    @reservations = current_user.reservations
   end
 
   def new
@@ -27,6 +27,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @price = total_price(@reservation.start_date, @reservation.end_date, @location.price )
   end
 
   def destroy
@@ -50,5 +51,10 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:start_date, :end_date, :price, :total, :status)
   end
 
+  def total_price(start_date, end_date, price)
+    a = Date.parse(end_date.strftime("%d-%m-%Y"))
+    b = Date.parse(start_date.strftime("%d-%m-%Y"))
+    ((a-b).to_i) * price
+  end
 
 end
