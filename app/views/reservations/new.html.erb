@@ -2,13 +2,17 @@
 <div class= "container">
 <h1>Nova reserva</h1>
 
-<%#= simple_form_for @reservation, as: :location, url: reservation_path(@reservation), method: :post do |f| %>
-<%#= f.input :start_date %>
-<%#= f.input :end_date %>
-<%#= f.input :price %>
-<%#= f.input :total %>
-<%#= f.input :status %>
-<%#= f.submit "Reservar", class:"btn btn-primary" %>
-<%# end %>
-</div>
-
+<% if @pets.empty? %>
+  "É necessario cadastrar um pet para efetuar a reserva."
+<% else %>
+    <%= simple_form_for [@reservation], as: :reservation, url: location_reservations_path(@location.id), method: :post do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :price %>
+    <%= f.input :total %>
+    <%#= f.input :status %>
+    <%= f.input :pet, collection: @pets.map { |pet| [pet.name.capitalize, pet.id]}, include_blank: false %>
+    <%= f.submit "Reservar", class:"btn btn-primary" %>
+    <% end %>
+    </div>
+<% end %>
