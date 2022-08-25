@@ -20,7 +20,7 @@
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Meu Perfil", "#", class: "dropdown-item" %>
+              <%= link_to "Meu Perfil", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Minhas reservas", reservations_path, class: "dropdown-item" %>
               <%= link_to "Cadastrar Pet", new_pet_path, class: "dropdown-item" %>
               <%= link_to "Cadastrar Hospedagem", new_location_path, class: "dropdown-item" %>
