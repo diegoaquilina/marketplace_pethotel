@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="cover mb-4 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1>Meu perfil</h1>
+      <h3 class="typed-js" data-controller="typed-js"></h3>
+    </div>
+  </div>
+    <h1><%=@user.name%></h1>
+    <h3><%=@user.email%></h3>
+</div>
+<div class="container">
+  <div class="cover mb-4 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1>Meus bichos</h1>
+      <h3 class="typed-js" data-controller="typed-js"></h3>
+    </div>
+  </div>
+  <div class="card-product">
+  <img src="" alt="">
+    <ul>
+    <%@pets.each do |pet|%>
+    <h2><%= pet.name %></h1>
+    <p><%= pet.breed %></p>
+    <p>Porte: <%= pet.size_kg %></p>
+    <p>Peso:</p>
+    <% end %>
+    <ul>
+  </div>
+  <div>
+    <%= link_to "Adicionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+  </div>
+</div>
+<div class="container">
+  <div class="cover mb-4 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1>Meus Locais</h1>
+      <h3 class="typed-js" data-controller="typed-js"></h3>
+    </div>
+  </div>
+  <div class="card-product">
+  <img src="" alt="">
+    <ul>
+    <%@pets.each do |pet|%>
+    <h2><%= pet.name %></h1>
+    <p><%= pet.breed %></p>
+    <p>Porte: <%= pet.size_kg %></p>
+    <p>Peso:</p>
+    <% end %>
+    <ul>
+  </div>
+  <div>
+    <%= link_to "Adicionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+  </div>
+</div>
+
+<%#@pets.each do |pet|%>
+<%#= pet.name %>
+<%#= pet.breed %>
+<%# end %>
+
+<%#= link_to "Cadastrar Pet" new_pet_path, class: "newpet-link btn btn-outline-secondary ml-4"%>
