@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @reservation = Reservation.all
+    @reservations = Reservation.all
   end
 
   def new
@@ -19,7 +19,7 @@ class ReservationsController < ApplicationController
     @reservation.location = @location
     @reservation.pet = @pet 
     if @reservation.save
-      redirect_to location_path(@reservation.location)
+      redirect_to reservation_path(@reservation)
     else
       render :new, status: :unprocessable_entity
     end

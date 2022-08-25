@@ -1,28 +1,34 @@
-<h1>Suas reservas<b><%= @reservation %></h1>
+<h1>Suas reservas</h1>
 
-<%# if @reservations.empty? %>
+<% if @reservations.empty? %>
   "Voce nao possui nenhuma reserva confirmada."
-<%# else %>
+<% else %>
   <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
-        <th>Date</th>
-        <th>Duration</th>
-        <th>Total</th>
+        <th>Entrada</th>
+        <th>Saida</th>
+        <th>Detalhes</th>
+        <th>Status</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-        <%# @reservations.each do |reservation| %>
+        <% @reservations.each do |reservation| %>
           <tr>
-            <td><%= l reservation.date, :format => :date_with_time %></td>
-            <td><%= reservation.duration %></td>
-            <td><%= link_to 'Show', reservation_path(reservation.location, reservation) %></td>
+            <td><%= reservation.start_date %></td>
+            <td><%= reservation.end_date %></td>
+            <td><%= link_to 'Ver', reservation_path(reservation) %></td>
+            <% if reservation.status.nil? %>
+            <td><span class="badge bg-success">Ativa</span></td>
+            <% else %>
+            <td><span class="badge bg-danger">Canceleda</span></td>
+            <% end %>
           </tr>
-        <%# end %>
+        <% end %>
       </tbody>
     </table>
   </div>
-<%# end %>
+<% end %>

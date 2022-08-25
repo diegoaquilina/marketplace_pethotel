@@ -4,5 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pets = Pet.where(user: @user)
+    @locations = Location.where(user: @user)
   end
 end
