@@ -1,13 +1,25 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
+  def index
+    @reservation = Reservation.all
+  end
 
   def new
+    @pets = Pet.where(user: current_user)
+    @location = Location.find(params[:location_id])
     @reservation = Reservation.new
   end
 
   def create
+    @location = Location.find(params[:location_id])
     @reservation = Reservation.new(reservation_params)
+    @pet = Pet.find(params[:reservation][:pet])
+    @reservation.user = current_user
+    @reservation.location = @location
+    @reservation.pet = @pet 
     if @reservation.save
-      redirect_to location_path(@reservation)
+      redirect_to location_path(@reservation.location)
     else
       render :new, status: :unprocessable_entity
     end
