@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :devices, only: [:new, :create]
   resources :pets, only: [:new, :create]
+  resources :users, only: [:show]
 
   #get '/market', to: 'pages#market', as: 'market'
   #get '/hotel/busca', to: 'locations#index'

@@ -5,7 +5,7 @@
 <%= f.input :name %>
 <%= f.input  :size_kg, collection: Pet::SIZE_KG.map { |e| e.capitalize}, include_blank: false %>
 <%= f.input  :breed, collection: Pet::BREED.map { |e| e.capitalize}, include_blank: false  %>
-<%= f.submit "cadastrar pet", class:"btn btn-primary" %>
+<%= f.submit "adicionar bicho", class:"btn btn-primary"%>
+<%# adicionar link no submit para user#show %>
 <% end %>
 </div>
-
