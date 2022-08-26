@@ -28,19 +28,24 @@
     </div>
   </form>
     </div>
+<div class="container mb-5">
+  <div class="cards">
 
-<div class="cards">
-
-  <% @locations.each do |location| %>
-    <div class="card-product">
-      <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
-      <div class="card-product-infos">
-        <h2><%= location.user.name %></h2>
-        <p><strong>R$<%= location.price %>,00 p/ dia</strong></p>
-        <p><%= location.address %></p>
-        <%= link_to "Reservar esse espaço!",  new_location_reservation_path(location)%>
+    <% @locations.each do |location| %>
+      <div class="card-product">
+        <% if location.photo.attached?%>
+          <%= cl_image_tag location.photo.key, width: 620%>
+        <% else %>
+          <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
+        <% end %>
+          <div class="card-product-infos">
+            <h2><%= location.user.name %></h2>
+            <p><strong>R$<%= location.price %>,00 p/ dia</strong></p>
+            <p><%= location.address %></p>
+            <%= link_to "Reservar esse espaço!",  new_location_reservation_path(location)%>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
+  </div>
 </div>

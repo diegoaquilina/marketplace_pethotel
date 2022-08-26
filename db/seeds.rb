@@ -1,37 +1,30 @@
 require 'faker'
 
 puts "limpando banco de dados"
+Reservation.destroy_all
 Pet.destroy_all
-User.destroy_all
 Location.destroy_all
+User.destroy_all
 
 puts "Criando banco de dados"
 5.times do
   user = User.new(
-    name: Faker::TvShows::GameOfThrones.character,
+    name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: "123123"
+    password: "123456789",
+    address: "São Paulo"
   )
   user.save!
   2.times do
     pet = Pet.new(
       name: Faker::TvShows::GameOfThrones.dragon,
-      size_kg: rand(1..30),
-      breed: Faker::TvShows::GameOfThrones.house
+      size_kg: Pet::SIZE_KG.sample,
+      breed: Pet::BREED.sample,
+      weight: rand(1..40)
     )
     pet.user = user
     pet.save!
   end
-  location = Location.new(
-    address: Faker::TvShows::GameOfThrones.city,
-    available: [false, true].sample,
-    summary: Faker::TvShows::GameOfThrones.quote,
-    home_type: rand(0..3),
-    total_occupancy: rand(0..5),
-    price: rand(50..200)
-  )
-  location.user = user
-  location.save!
 end
 
 

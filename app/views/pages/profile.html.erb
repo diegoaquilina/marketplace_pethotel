@@ -3,7 +3,11 @@
       <div class="text-center">
         <h1>Meu perfil</h1>
         <div>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", style:"width: 150px; margin-left: auto; margin-right: auto;"%>
+        <% if current_user.photo.attached?%>
+            <%= cl_image_tag current_user.photo.key, width: 150, class: "avatar dropdown-toggle", style:"margin-left: auto; margin-right: auto;"%>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", style:"width: 150px; margin-left: auto; margin-right: auto;"%>
+          <% end %>
         </div>
         <h3 class="typed-js" data-controller="typed-js"></h3>
       </div>
@@ -47,7 +51,11 @@
   <div class="row justify-content-around">
     <%@pets.each do |pet|%>
       <div class="card ml-3 mt-2" style="width: 18rem;">
-        <img src="https://burst.shopifycdn.com/photos/white-dog-with-tongue-hanging-out.jpg?width=925&format=pjpg&exif=1&iptc=1" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+        <% if pet.photo.attached?%>
+        <%= cl_image_tag pet.photo.key, width: 925, class: "pet-img"%>
+        <% else %>
+        <img src="https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg?auto=compress&cs=tinysrgb&w=600" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= pet.name %></h5>
         </div>
@@ -81,7 +89,11 @@
     <% else %>
       <%@locations.each do |location|%>
         <div class="card ml-3 mt-2" style="width: 18rem;">
+        <% if location.photo.attached?%>
+        <%= cl_image_tag location.photo.key, width: 373, class: "location-img"%>
+        <% else %>
           <img src="https://burst.shopifycdn.com/photos/brick-country-house.jpg?width=373&format=pjpg&exif=1&iptc=1" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+        <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= location.address %></h5>
           </div>

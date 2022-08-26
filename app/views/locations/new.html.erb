@@ -18,6 +18,7 @@
 
   <%= f.label :summary %>
     <%= f.text_area  :summary, class: "mx-auto w-100" %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Cadastrar hospedagem", class:"btn btn-primary" %>
   <% end %>
 </div>

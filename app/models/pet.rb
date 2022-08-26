@@ -1,5 +1,6 @@
 class Pet < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
 
   SIZE_KG = ["Mini: 0-5kg", "Pequeno: 5-10kg", "Médio: 10-20kg", "Grande: 20-40kg", "Gigante: +40kg"]
   BREED = ["Akita",
