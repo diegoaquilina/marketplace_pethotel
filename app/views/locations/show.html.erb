@@ -1,1 +1,39 @@
-<h1>Show</h1>
+<h1>Locations Show</h1>
+
+<!--Nesta pagina abrir o local e os pets que estão vinculados a este local-->
+<!--rota: location GET  /locations/:id(.:format)  locations#show-->
+
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
+  <div class="cover mb-4 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+      <h1>Reservas</h1>
+      <h3 class="typed-js" data-controller="typed-js"></h3>
+    </div>
+  </div>
+  <div class="row justify-content-around">
+    <% if @locations.nil? %> <!-- ou reservations? -->
+      <h3>Nenhuma Reserva</h3>
+    <% else %>
+      <%@locations.each do |location|%>
+        <div class="card ml-3 mt-2" style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= location.address %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-home"></i> Moradia: <%= location.home_type %></li>
+            <li class="list-group-item"><i class="fa-solid fa-warehouse"></i> Capacidade: <%= location.total_occupancy %></li>
+            <li class="list-group-item"><i class="fa fa-list-alt" aria-hidden="true"></i> Resumo: <%= location.summary %></li>
+          </ul>
+          <div class="card-body">
+            <a href="<%= edit_location_path(location) %>" class="btn btn-outline-secondary">Editar</a>
+          <%= link_to "Deletar location", location_path(location), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Você tem certeza?"} %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "Adicionar hospedagem", new_location_path, class: "btn btn-outline-warning ml-4 mb-3 mt-5" %>
+  </div>
+</div>

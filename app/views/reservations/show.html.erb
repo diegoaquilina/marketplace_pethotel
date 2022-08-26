@@ -1,15 +1,19 @@
 <div class= "container">
     <h1>Detalhes da reserva</h1>
 
-    <div class="cards"> 
+    <div class="cards">
       <div class="card-product">
+      <% if @reservation.location.photo.attached?%>
+        <%= cl_image_tag @reservation.location.photo.key, width: 373%>
+      <% else %>
         <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
+      <% end %>
         <div class="card-product-infos">
           <h2><%= @reservation.location.home_type %></h2>
           <p><%= @reservation.location.address %></p>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="table-responsive">
     <table class="table">

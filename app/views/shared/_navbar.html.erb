@@ -18,7 +18,11 @@
             <%#= link_to "Login", new_user_session_path, class: "nav-link btn btn-outline-secondary ml-4" %>
           <!--/li-->
           <li class="nav-item dropdown">
+          <% if current_user.photo.attached?%>
+            <%= cl_image_tag current_user.photo.key, width: 40, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Meu Perfil", profile_path, class: "dropdown-item" %>
               <%#= link_to "Meu Perfil", user_path(current_user), class: "dropdown-item" %>
