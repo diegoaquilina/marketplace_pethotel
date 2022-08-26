@@ -28,10 +28,10 @@
       </div>
       <div class="col-md-12">
         <label class="form-label">Endereço</label>
-        <input type="text" class="form-control" >
+         <input type="text" class="form-control" value="<%=@user.address%>">
       </div>
        <div class="mt-2">
-          <%= link_to "Editar perfil", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+          <%= link_to "Editar perfil", edit_registration_path(current_user), class: "btn btn-outline-warning ml-4" %>
        </div>
     </form>
 </div>
@@ -46,7 +46,7 @@
   </div>
   <div class="row justify-content-around">
     <%@pets.each do |pet|%>
-      <div class="card ml-3 " style="width: 18rem;">
+      <div class="card ml-3 mt-2" style="width: 18rem;">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= pet.name %></h5>
@@ -80,7 +80,7 @@
       <h3>Nenhum local cadastrado</h3>
     <% else %>
       <%@locations.each do |location|%>
-        <div class="card ml-3 " style="width: 18rem;">
+        <div class="card ml-3 mt-2" style="width: 18rem;">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%= location.address %></h5>
@@ -91,8 +91,8 @@
             <li class="list-group-item"><i class="fa fa-list-alt" aria-hidden="true"></i> Resumo: <%= location.summary %></li>
           </ul>
           <div class="card-body">
-            <a href="<%= edit_pet_path(location) %>" class="btn btn-outline-secondary">Editar</a>
-          <%= link_to "Deletar Pet", pet_path(location), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Você tem certeza?"} %>
+            <a href="<%= edit_location_path(location) %>" class="btn btn-outline-secondary">Editar</a>
+          <%= link_to "Deletar location", location_path(location), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Você tem certeza?"} %>
           </div>
         </div>
       <% end %>
