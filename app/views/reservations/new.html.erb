@@ -8,8 +8,7 @@
     <%= simple_form_for [@reservation], as: :reservation, url: location_reservations_path(@location.id), method: :post do |f| %>
       <%= f.input :start_date %>
       <%= f.input :end_date %>
-      <%= f.input :price, disabled: true %>
-      <%= f.input :total, disabled: true %>
+      <%= f.input :Diaria, disabled: true, input_html: {value: @location.price} %>
       <%##= f.input :status %>
       <%= f.input :pet, collection: @pets.map { |pet| [pet.name.capitalize, pet.id]}, include_blank: false %>
       <%= f.submit "Reservar", class:"btn btn-primary" %>
