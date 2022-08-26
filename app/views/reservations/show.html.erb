@@ -5,7 +5,8 @@
       <div class="card-product">
         <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
         <div class="card-product-infos">
-          <h2><%= @reservation.location.home_type %></h2>
+          <h2><%= @reservation.location.user.name %></h2>
+          <p><%= @reservation.location.home_type %></p>
           <p><%= @reservation.location.address %></p>
         </div>
       </div>
@@ -34,8 +35,8 @@
             <td><%= @reservation.location.address %></td>
             <td><%= @reservation.start_date.strftime("%d/%m/%Y") %></td>
             <td><%= @reservation.end_date.strftime("%d/%m/%Y") %></td>
-            <td><%= @reservation.location.price %></td>
-            <td><%= @price %></td>
+            <td>R$<%= @reservation.location.price %></td>
+            <td>R$<%= @price %></td>
             <td><% reservation_path(@reservation) %></td>
             <% if @reservation.status.nil? %>
               <td><span class="badge bg-success">Ativa</span></td>
