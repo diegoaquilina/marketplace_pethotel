@@ -50,5 +50,5 @@ class Pet < ApplicationRecord
   "Weimaraner",
   "Yorkshire",
   "SRD",
-  "Outra" ]
+  "Outra"]
 end
