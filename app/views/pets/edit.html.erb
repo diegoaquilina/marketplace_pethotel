@@ -1,0 +1,11 @@
+<div class= "container">
+<h1>Edite seu pet</h1>
+
+<%= simple_form_for @pet, as: :pet, url: pets_path(@pet), method: :patch do |f| %>
+<%= f.input :name %>
+<%= f.input  :size_kg, collection: Pet::SIZE_KG.map { |e| e.capitalize}, include_blank: false %>
+<%= f.input  :breed, collection: Pet::BREED.map { |e| e.capitalize}, include_blank: false  %>
+<%= f.submit "adicionar bicho", class:"btn btn-primary"%>
+<%# adicionar link no submit para user#show %>
+<% end %>
+</div>

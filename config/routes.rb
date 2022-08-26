@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :reservations, only: [:show, :edit, :update, :index, :destroy]
 
   resources :devices, only: [:new, :create]
-  resources :pets, only: [:new, :create]
+
+  resources :pets, only: [:new, :create, :edit, :destroy]
+  resources :users, only: [:show, :edit, :update]
 
   get '/profile', to: 'pages#profile', as: 'profile'
 
