@@ -8,8 +8,6 @@
     <thead>
       <tr>
         <th>Local</th>
-        <th>Entrada</th>
-        <th>Saida</th>
         <th>Detalhes</th>
         <th>Status</th>
         <th colspan="3"></th>
@@ -20,8 +18,6 @@
         <% @reservations.each do |reservation| %>
           <tr>
             <td><%= reservation.location.address %></td>
-            <td><%= reservation.start_date.strftime("%d/%m/%Y") %></td>
-            <td><%= reservation.end_date.strftime("%d/%m/%Y") %></td>
             <td><%= link_to 'Ver', reservation_path(reservation) %></td>
             <% if reservation.status.nil? %>
               <td><span class="badge bg-success">Ativa</span></td>

@@ -7,55 +7,71 @@
   </div>
     <h1><%=@user.name%></h1>
     <h3><%=@user.email%></h3>
+    <div class="pb-3"></div>
+    <%= link_to "Editar perfil", "#", class: "btn btn-outline-warning ml-4" %>
+  </div>
+  <div class="container">
+    <div class="cover mb-4 d-flex align-items-center justify-content-center">
+      <div class="text-center">
+        <h1>Meus bichos</h1>
+        <h3 class="typed-js" data-controller="typed-js"></h3>
+      </div>
+    </div>
+    <div class="cards container d-flex">
+        <div class="col-3">
+          <%@pets.each do |pet|%>
+            <div class="card" style="width: 13rem;">
+              <div>
+                <%= image_tag ("https://source.unsplash.com/random/?dog/width=200px/height=300px"), id: "foto_profile_dog" %>
+                <h2><%= pet.name %></h1>
+                <p><%= pet.breed %></p>
+                <p>Porte: <%= pet.size_kg %></p>
+                <p>Peso:</p>
+                <%= link_to "Editar dog", "#", class: "btn btn-outline-warning ml-4" %>
+              </div>
+            </div>
+            <div class="pb-3"></div>
+          <% end %>
+        </div>
+    </div>
+    <div>
+    <%= link_to "Adicionar dog", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+    </div>
+  </div>
+
 </div>
-<div class="container">
+
+  <div class="container">
   <div class="cover mb-4 d-flex align-items-center justify-content-center">
     <div class="text-center">
-      <h1>Meus bichos</h1>
+      <h1>Meus locais</h1>
       <h3 class="typed-js" data-controller="typed-js"></h3>
     </div>
   </div>
-  <div class="card-product">
-  <img src="" alt="">
-    <ul>
-    <%@pets.each do |pet|%>
-    <h2><%= pet.name %></h1>
-    <p><%= pet.breed %></p>
-    <p>Porte: <%= pet.size_kg %></p>
-    <p>Peso:</p>
+
+  <div class="card">  
+    <% if @locations.nil? %>
+      <h3>Nenhum local cadastrado</h3>
+    <% else %>
+      <ul>
+        <li class="card">
+            <%@locations.each do |location|%>
+              <h3><%= location.available %></h3>
+              <h3><%= location.address %></h3>
+              <h3><%= location.home_type %></h3>
+              <h3><%= location.total_occupancy %></h3>
+              <h3><%= location.summary %></h3>
+              <%= link_to "Editar local", "#", class: "btn btn-outline-warning ml-4" %>
+            <% end %>
+        </li>
+      <ul>
     <% end %>
-    <ul>
   </div>
+
+  <div class="pb-3"></div>
+
   <div>
-    <%= link_to "Adicionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
-  </div>
-</div>
-<div class="container">
-  <div class="cover mb-4 d-flex align-items-center justify-content-center">
-    <div class="text-center">
-      <h1>Meus Locais</h1>
-      <h3 class="typed-js" data-controller="typed-js"></h3>
-    </div>
-  </div>
-  <div class="card-product">
-  <img src="" alt="">
-    <ul>
-    <%@pets.each do |pet|%>
-    <h2><%= pet.name %></h1>
-    <p><%= pet.breed %></p>
-    <p>Porte: <%= pet.size_kg %></p>
-    <p>Peso:</p>
-    <% end %>
-    <ul>
-  </div>
-  <div>
-    <%= link_to "Adicionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+    <%= link_to "Adicionar hospedagem", new_location_path, class: "btn btn-outline-warning ml-4" %>
   </div>
 </div>
 
-<%#@pets.each do |pet|%>
-<%#= pet.name %>
-<%#= pet.breed %>
-<%# end %>
-
-<%#= link_to "Cadastrar Pet" new_pet_path, class: "newpet-link btn btn-outline-secondary ml-4"%>
