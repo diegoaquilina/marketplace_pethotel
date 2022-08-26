@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :reservations, only: [:destroy]
 
   resources :devices, only: [:new, :create]
-  resources :pets, only: [:new, :create]
-  resources :users, only: [:show]
+  resources :pets, only: [:new, :create, :edit, :destroy]
+  resources :users, only: [:show, :edit, :update]
 
   #get '/market', to: 'pages#market', as: 'market'
   #get '/hotel/busca', to: 'locations#index'

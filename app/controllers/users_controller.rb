@@ -4,5 +4,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pets = Pet.where(user: @user)
+    @locations = Location.where(user: @user)
+  end
+
+  def edit; end
+
+  def update
+    @user.update(users_params)
+    redirect_to user_path(@user)
+  end
+
+  private
+
+  def users_params
+    params.require(:user).permit(:name, :address, :rating) #TODO alterar parametros
   end
 end

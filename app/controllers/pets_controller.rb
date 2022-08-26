@@ -14,6 +14,16 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def destroy
+    @pet = Pet.find(params[:id])
+    @pet.destroy
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def pet_params

@@ -1,55 +1,105 @@
-<div class="container">
-  <div class="cover mb-4 d-flex align-items-center justify-content-center">
-    <div class="text-center">
-      <h1>Meu perfil</h1>
-      <h3 class="typed-js" data-controller="typed-js"></h3>
+<div class="container shadow-sm p-3 mb-5 bg-white rounded mt-4" >
+    <div class="cover mb-4 d-flex align-items-center justify-content-center">
+      <div class="text-center">
+        <h1>Meu perfil</h1>
+        <div>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", style:"width: 150px; margin-left: auto; margin-right: auto;"%>
+        </div>
+        <h3 class="typed-js" data-controller="typed-js"></h3>
+      </div>
     </div>
-  </div>
-    <h1><%=@user.name%></h1>
-    <h3><%=@user.email%></h3>
+
+    <%# PERFIL USUÁRIO %>
+    <form class="row">
+      <%if @user.name?  %>
+        <div class="col-md-6">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" value="<%=@user.name%>">
+        </div>
+      <%else  %>
+        <div class="col-md-6">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" placeholder="Nome">
+        </div>
+      <%end %>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" value="<%=@user.email%>">
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Endereço</label>
+        <input type="text" class="form-control" >
+      </div>
+       <div class="mt-2">
+          <%= link_to "Editar perfil", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+       </div>
+    </form>
 </div>
-<div class="container">
+    <%# ADICIONAR BICHO  %>
+
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
   <div class="cover mb-4 d-flex align-items-center justify-content-center">
     <div class="text-center">
       <h1>Meus bichos</h1>
       <h3 class="typed-js" data-controller="typed-js"></h3>
     </div>
   </div>
-  <div class="card-product">
-  <img src="" alt="">
-    <ul>
+  <div class="row justify-content-around">
     <%@pets.each do |pet|%>
-    <h2><%= pet.name %></h1>
-    <p><%= pet.breed %></p>
-    <p>Porte: <%= pet.size_kg %></p>
-    <p>Peso:</p>
+      <div class="card ml-3 " style="width: 18rem;">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= pet.name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa-solid fa-paw"></i> Raça: <%= pet.breed %></li>
+          <li class="list-group-item"><i class="fa-solid fa-weight-scale"></i> Peso: <%= pet.size_kg %> kg</li>
+
+        </ul>
+        <div class="card-body">
+          <a href="<%= edit_pet_path(pet) %>" class="btn btn-outline-secondary">Editar</a>
+         <%= link_to "Deletar Pet", pet_path(pet), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Você tem certeza?"} %>
+        </div>
+      </div>
     <% end %>
-    <ul>
   </div>
   <div>
-    <%= link_to "Adcionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+    <%= link_to "Adicionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4 mt-4" %>
   </div>
 </div>
-<div class="container">
+      <%# ADICIONAR LOCAIS %>
+<div class="container shadow-sm p-3 mb-5 bg-white rounded">
   <div class="cover mb-4 d-flex align-items-center justify-content-center">
     <div class="text-center">
       <h1>Meus Locais</h1>
       <h3 class="typed-js" data-controller="typed-js"></h3>
     </div>
   </div>
-  <div class="card-product">
-  <img src="" alt="">
-    <ul>
-    <%@pets.each do |pet|%>
-    <h2><%= pet.name %></h1>
-    <p><%= pet.breed %></p>
-    <p>Porte: <%= pet.size_kg %></p>
-    <p>Peso:</p>
+  <div class="row justify-content-around">
+    <% if @locations.empty? %>
+      <h3>Nenhum local cadastrado</h3>
+    <% else %>
+      <%@locations.each do |location|%>
+        <div class="card ml-3 " style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="border-radius: 5%; margin-top: 1rem;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= location.address %></h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fas fa-home"></i> Moradia: <%= location.home_type %></li>
+            <li class="list-group-item"><i class="fa-solid fa-warehouse"></i> Capacidade: <%= location.total_occupancy %></li>
+            <li class="list-group-item"><i class="fa fa-list-alt" aria-hidden="true"></i> Resumo: <%= location.summary %></li>
+          </ul>
+          <div class="card-body">
+            <a href="<%= edit_pet_path(location) %>" class="btn btn-outline-secondary">Editar</a>
+          <%= link_to "Deletar Pet", pet_path(location), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Você tem certeza?"} %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-    <ul>
   </div>
   <div>
-    <%= link_to "Adcionar bicho", new_pet_path, class: "btn btn-outline-warning ml-4" %>
+    <%= link_to "Adicionar hospedagem", new_location_path, class: "btn btn-outline-warning ml-4 mb-3 mt-5" %>
   </div>
 </div>
 
