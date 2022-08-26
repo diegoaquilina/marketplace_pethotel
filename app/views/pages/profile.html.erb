@@ -35,7 +35,7 @@
          <input type="text" class="form-control" value="<%=@user.address%>">
       </div>
        <div class="mt-2">
-          <%= link_to "Editar perfil", edit_registration_path(current_user), class: "btn btn-outline-warning ml-4" %>
+          <%= link_to "Editar perfil", edit_user_registration_path, class: "btn btn-outline-warning ml-4", data: {turbo: false} %>
        </div>
     </form>
 </div>

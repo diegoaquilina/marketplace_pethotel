@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :photo])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :photo])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :photo], except: [:password, :password_confirmation])
   end
 end
