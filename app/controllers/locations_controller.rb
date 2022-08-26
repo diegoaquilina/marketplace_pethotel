@@ -13,7 +13,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     @location.user = current_user
     if @location.save
-      redirect_to profile_path(@location)
+      redirect_to profile_show_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,6 +32,13 @@ class LocationsController < ApplicationController
     @location.update(location_params)
     redirect_to location_path(@location)
   end
+
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+    redirect_to profile_show_path(current_user)
+  end
+
 
   private
 

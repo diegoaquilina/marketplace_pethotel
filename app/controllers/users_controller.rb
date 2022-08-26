@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
+    raise
     @user.update(users_params)
     redirect_to user_path(@user)
   end

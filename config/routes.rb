@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   resources :pets, only: [:new, :create, :edit, :destroy]
   resources :users, only: [:show, :edit, :update]
 
+
   get '/profile', to: 'pages#profile', as: 'profile'
+  get '/profile/:id', to: 'pages#profile', as: 'profile_show'
+
 
   # resources :users, only: [:show]
   #get '/market', to: 'pages#market', as: 'market'

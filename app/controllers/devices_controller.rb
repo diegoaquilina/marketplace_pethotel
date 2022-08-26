@@ -13,11 +13,14 @@ class DevicesController < ApplicationController
     end
   end
 
+  def update
+    @user.update(users_params)
+    redirect_to profile_show_path(@user)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
 end
-
-
