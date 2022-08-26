@@ -27,7 +27,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
-    @price = total_price(@reservation.start_date, @reservation.end_date, @location.price )
+    @price = total_price(@reservation.start_date, @reservation.end_date, 5 )
   end
 
   def destroy
