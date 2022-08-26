@@ -1,1 +1,52 @@
-<h1>Show</h1>
+<div class= "container">
+  <h1>Detalhes da reserva</h1>
+
+  <div class="cards"> 
+    <div class="card-product">
+      <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
+      <div class="card-product-infos">
+        <h2><%= @reservation.location.home_type %></h2>
+        <p><%= @reservation.location.address %></p>
+      </div>
+    </div>
+  </div>  
+
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Pet</th>
+        <th>Local</th>
+        <th>Entrada</th>
+        <th>Saida</th>
+        <th>Diária</th>
+        <th>Total</th>
+        <th></th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        <tr>
+          <td><%= @reservation.pet.name %></td>
+          <td><%= @reservation.location.address %></td>
+          <td><%= @reservation.start_date.strftime("%d/%m/%Y") %></td>
+          <td><%= @reservation.end_date.strftime("%d/%m/%Y") %></td>
+          <td><%= @reservation.location.price %></td>
+          <td><%= @price %></td>
+          <td><% reservation_path(@reservation) %></td>
+          <% if @reservation.status.nil? %>
+            <td><span class="badge bg-success">Ativa</span></td>
+          <% else %>
+            <td><span class="badge bg-danger">Canceleda</span></td>
+          <% end %>
+        </tr>
+
+    </tbody>
+  </table>
+
+  <%= link_to "Retornar para minhas reservas", reservations_path, class:"btn btn-outline-secondary ml-4"  %>
+
+</div>
