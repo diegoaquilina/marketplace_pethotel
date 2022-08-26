@@ -2,11 +2,31 @@
     Escolha o lar ideal para o seu Pet 🐾
 </div>
 
-  <div>
-  <label for="data">Entrada:</label>
-      <input type="date" id="data" name="entrada">
-    <label for="data">Saída:</label>
-      <input type="date" id="data" name="saida">
+  <div class="py-4 mt-2 mb-2 w-100 d-flex align-items-center justify-content-center">
+  <form class="row">
+    <label for="date" class="col-2 col-form-label">Check-In</label>
+    <div class="col-4">
+      <div class="input-group date" id="datepicker">
+        <input type="text" class="form-control bg-white" id="date"/>
+        <span class="input-group-append">
+          <span class="input-group-text bg-light d-block">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </span>
+      </div>
+    </div>
+   <label for="date" class="col-2 col-form-label">Check-Out</label>
+    <div class="col-4">
+      <div class="input-group date" id="datepicker">
+        <input type="text" class="form-control bg-white" id="date"/>
+        <span class="input-group-append">
+          <span class="input-group-text bg-light d-block">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </span>
+      </div>
+    </div>
+  </form>
     </div>
 
 <div class="cards">
@@ -15,8 +35,8 @@
     <div class="card-product">
       <img src="https://s2.glbimg.com/zNn8NIWzdwXHz2pEoSlz76DaG30=/620x550/e.glbimg.com/og/ed/f/original/2018/03/13/caes-branco-jardim-vasos-pedras-madeira-flores.jpg" />
       <div class="card-product-infos">
-        <h2><%= location.user_id %></h2>
-        <p><%= location.price %></p>
+        <h2><%= location.user.name %></h2>
+        <p><strong>R$<%= location.price %>,00 p/ dia</strong></p>
         <p><%= location.address %></p>
         <%= link_to "Reservar esse espaço!",  new_location_reservation_path(location)%>
       </div>
