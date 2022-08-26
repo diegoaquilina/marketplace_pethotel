@@ -14,6 +14,7 @@ class DevicesController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
     @user.update(users_params)
     redirect_to profile_show_path(@user)
   end
@@ -21,6 +22,6 @@ class DevicesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :address, :email, :password)
   end
 end
